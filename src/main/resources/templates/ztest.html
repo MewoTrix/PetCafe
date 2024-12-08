@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.js"></script>
+
+</head>
+
+<body>
+<div class="pet-likeSite">
+    <div class="pet-likeSite-left">是否点赞&ensp;:&ensp;</div>
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+    <input type="radio" name="like" value="0" class="nolike-site">不喜欢
+    <div></div>
+    <input type="radio" name="like" value="1" class="like-site">喜欢
+
+    <button class="one"></button>
+</div>
+<script>
+    $(document).on("click",".one",function (){
+        console.log(typeof $('input:radio:checked').val() == "undefined");
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <style>
+        /* 全局配置 */
+        *{
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+        body{
+            background-color: #FFF8DCFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        a{
+            color: #7367F0;
+            text-decoration: none;
+        }
+
+        /* 块1 */
+        .head{
+            align-self: flex-start;
+            padding: 20px;
+            margin-left: 20px;
+            font-family: STHupo;
+            font-size: 1.5em;
+        }
+
+        /* 块2 */
+        .mid{
+            height: 600px;
+            width: 420px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            box-shadow:  0 0 15px #000;
+        }
+        .mid-header,.mid-welcom,.mid-plzlogin{
+            align-self: center;
+            font-family: 'Microsoft YaHei UI';
+        }
+        .mid-header{
+            font-size: 2em;
+            margin: 14px 0 28px;
+        }
+        .mid-welcom{
+            font-size: 20px;
+            font-weight: lighter;
+            margin-bottom: 14px;
+        }
+        .mid-plzlogin{
+            font-weight: lighter;
+            margin-bottom: 28px;
+        }
+
+        /* 表单 */
+        .mid-form-id,.mid-form-pasw{
+            width: 100%;
+            height: 30px;
+            border: 1px solid;
+            border-radius: 15px;
+            text-align: center;
+            margin: 5px 0 20px;
+            font-size: 18px;
+        }
+        .mid-form-btn{
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            color: white;
+            margin: 20px 0;
+            background: linear-gradient(360deg, rgb(44, 48, 51) -0.09%, rgb(84, 88, 93) 100%);
+        }
+        label{
+            margin: 10px 10px;
+        }
+
+        /*  注册、管理员功能块  */
+        .mid-register,.mid-status{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        /*  底部icon  */
+        .mid-icon{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        /****** 私有属性 ********/
+        .mid-icon-left{
+            background: url("/pic/cat1.png");
+            width: 71px;
+            height: 100px;
+            background-size: 100% 100%;
+        }
+        .mid-icon-right{
+            background: url("/pic/cat1-back.png");
+            width: 71px;
+            height: 100px;
+            background-size: 100% 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- 块1 -->
+<div class="head">登录中心</div>
+
+<!-- 块2 -->
+<div class="mid">
+    <div class="mid-header"><b>PetCafé</b></div>
+    <div class="mid-welcom">欢迎来到 PetCafé 👋</div>
+    <div class="mid-plzlogin">管理员登录</div>
+
+    <!-- 表单 -->
+    <form action="c-Admin-Login-Check" method="GET">
+        <label>账号</label><br>
+        <input type="text" name="aid" class="mid-form-id" parameterType="int"><br>
+        <label>密码</label><br>
+        <input type="password" name="apwd" class="mid-form-pasw"><br>
+        <button type="submit" class="mid-form-btn">登录</button>
+    </form>
+
+    <!-- 管理员登录 -->
+    <div class="mid-status">
+        <a href="a-Login" title="用户登录 👉" target="_self">用户登录 👉</a>
+    </div>
+
+    <!-- mid-底部icon -->
+    <div class="mid-icon">
+        <div class="mid-icon-left"></div>
+        <div class="mid-icon-right"></div>
+    </div>
+</div>
+
+
+</div>
+</body>
+</html>

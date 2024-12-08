@@ -1,0 +1,312 @@
+<快捷键>
+    tab 缩进
+    shift + tab 反缩进
+    Alt + 7 查看当前文件所有函数
+</快捷键>
+
+<java><!--  👉 import com.alibaba.fastjson.JSONObject;  -->
+
+    <!--  【Java实体类】 👉 【Json字符串】  -->
+    String str = JSONUtil.toJsonStr(Java对象);
+
+    <!--  【Java实体类】 👉 【JSONObject】  -->
+    JSONObject jsonObject = JSONObject.parseObject(java实体类);
+
+    <!--  【Json字符串、JSONObject】 👉 【Java实体类】  -->
+    JAVA实体类 JAVA对象 = JSONObject.parseObject(JSON字符串、JSONObject, JAVA实体类.class);
+
+    <!--  【数组】 👉 【JSONArray】  -->
+    JSONArray jsonArray = (JSONArray) JSONArray.toJSON(Java数组);
+
+    <!--  【数组】 👉 【String】  -->
+    String str = Arrays.toString(数组);
+
+    <!--  【String】 👉 【JSONObject】  -->
+    JSONObject jsonObject = JSONObject.parseObject(字符串);
+
+    <!--  【String】 👉 【JSONArray】  -->
+    JSONArray jsonArray1 = JSONArray.parseArray(字符串);
+
+    <!--  【JSONObject】 👉 【String】  -->
+    String str = jsonObject.toString();
+
+    <!--  【JSONObject】 👉 【JSONArray】  -->
+    JSONArray jsonArray = new JSONArray();
+    jsonArray.add(jsonObject);
+
+    <!--  【JSONArray】 👉 【String】  -->
+    String str = jsonArray.toString();
+
+    <!--  【JSONArray】 👉 【JSONObject】  -->
+    // 获取 JSONArray 指定 index 的对象
+    Object o = jsonArray.get(index);
+
+    <!--  【Json对象】添加参数  -->
+    jsonObject.put("msg","上传成功");
+
+    <!-- Map初始化时使用不会被异步锁的类型 -->
+    new ConcurrentHashMap<>();
+
+    <!-- 遍历Map -->
+    /* 用Iterator遍历Map不会报异常 */
+    Iterator iter = map.entrySet().iterator();
+    while (iter.hasNext()) {
+
+    Map.Entry entry = (Map.Entry) iter.next();
+    /* java11有bug，类型判断为jSON，但是编译的时候又说是JAVA实体类，只能通过两种类型共有的方法转成JSON字符串，再转回来JAVA实体类*/
+
+    String str = JSONUtil.toJsonStr(entry.getValue());
+    Commodity commodity = JSONObject.parseObject(str, Commodity.class);
+
+    if (commodity.getCid() == cid) {
+    iter.remove();
+    }
+    }
+
+
+</java>
+
+<!-- 自动跳转 -->
+<meta http-equiv="Refresh" content="2;url=a-Login"/>
+
+<!-- 导入css -->
+<link href="css/alogin.css" rel="stylesheet">
+
+<!-- 导入jquery -->
+<script src="/frame/jquery-3.6.0.js"></script>
+
+<!-- css -->
+<style>
+    /* 全局配置 */
+    * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+    }
+
+    a {
+        color: #7367F0;
+        text-decoration: none;
+    }
+
+    body {
+        background-color: #FFF8DCFF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 滚动条样式 */
+    /* 滚动条的宽度 */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* 滚动条里面小方块 */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* 滚动条里面轨道 */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        border-radius: 0;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* 滚动条出现时不挤压元素宽度 */
+    .scroll {
+        overflow-y: overlay;
+    }
+
+    /* 字体 */
+    .font {
+        /* 英文字体 */
+        font-family: "Hobo Std";
+        /* 页面变小字体不换行 */
+        white-space: nowrap;
+        /* 文字不能被复制 */
+        user-select: none;
+    }
+
+    .div {
+        /* 局部滚动 */ /* auto：超出范围时才出现滚动条 */
+        overflow: auto;
+        /* 解决flex盒子被padding撑开 */
+        box-sizing: border-box;
+        /* 父元素透明子元素不透明 */
+        background-color: rgba(255, 255, 255, 0.5);
+        /* 阴影 */ /* 水平阴影 垂直阴影 模糊范围 阴影尺寸 颜色 内外阴影（inset/outset） */
+        box-shadow: 0px 0px 10px 5PX #445760 inset;
+        /* 动画 */
+        transition: all 0.5s;
+        transform: rotateY(-180deg);
+        /* hover和click样式冲突，在css的(:hover)加!important，js控制click */
+        color: snow !important;
+    }
+
+    /* 图片按比例缩小放进盒子 方式 ① */
+    .img {
+        width: 100px;
+        height: 100px;
+        background: url("/pic") no-repeat;
+        background-size: contain;
+    }
+
+    /* 图片按比例缩小放进盒子 方式 ② */
+    .img {
+        object-fit: fill;
+    }
+
+    /* 容器隐藏四个方法 */
+    .div {
+        /* 占据位置，对网页布局起作用，会响应用户交互 */
+        opacity: 0;
+        /* 占据位置，对网页布局起作用，不响应用户交互 */
+        visibility: hidden;
+        visibility: visible;
+        /* 不占据位置，对网页布局不起作用，不响应用户交互 */
+        display: none;
+    }
+
+    /* 子元素添加进父容器中时，超过一屏后被其他子元素挤压缩小的解决方法 */
+    .div {
+        /* 子元素中添加 */
+        flex-shrink: 0;
+        /* 外边框添加线，不包含在父元素高宽度 */
+        outline: 2px solid black;
+    }
+
+</style>
+
+<script>
+    /* 🏮
+        典型Ajax  --》  Post请求
+        contentType ：   发给后端的数据类型
+        dataType ：      从后端接收数据的转换成的类型
+    */
+    $.ajax({
+        url: "/test",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            uid: $(".hidden-use-id").text(),
+        }),
+        async: false,        /* 关闭异步，即等待ajax完成后再进行下面操作 */
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        },
+    });
+
+    /* 🏮 清空表单 */
+    $("form input").val("");
+
+    /* 🏮 静态点击更新 */
+    $(".out-self").click(function () {
+    });
+
+    /* 🏮 动态点击更新 */  /* 添加off，避免on多次增加监听器 */
+    $(document).off("click", ".点击的组件标签").on("click", ".点击的组件标签", function () {
+    });
+
+    /* 🏮 自动跳转 */
+    window.location.href = "b.html";
+    top.location.href = "b.html";
+    location.href = "b.html";
+    self.location = "b.html";
+
+    window.navigate("b.html");
+    window.location.assign("b.html");
+
+    /* 🏮 定时跳转 */
+    setTimeout(toLogin, 2000);
+
+    function toLogin() {
+        window.location.assign('http://localhost:8080/a-Login');
+    }
+
+    /* 🏮 进入Ajax打印 */
+    console.log("▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇");
+    console.log("▇▇▇ Success Ajax alter-Upwd-Uname");
+    console.log("▇▇▇ 全局对象是 = ");
+    for (let key in currentUser) console.log("▇▇▇ " + key + " ：" + currentUser[key]);
+    console.log("▇▇▇ 传出数据是 = " + pwdIn + " <- 要修改的密码");
+    console.log("▇▇▇            " + unameIn + " <- 要修改的名字");
+    console.log("▇▇▇            " + currentUser.uid + " <- uid");
+    console.log("▇▇▇ 传入数据是 = ");
+    for (let key in data) console.log("▇▇▇ " + key + " ：" + data[key]);
+    console.log("▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇");
+    console.log(" ");
+
+    /* 🏮 等待页面dom树加载完毕，再执行代码 */
+    /* 写法一：标准写法 */
+    $(document).ready(function () {
+    });
+    /* 写法二：简写 */
+    $(function () {
+    })
+    /* 两种写法是等价的 */
+
+    /* 🏮 等待页面所有资源（包括css样式表、dom树、图片、第三方框架）加载完毕，再执行代码 */
+    $(window).load(function () {
+    });
+
+    /* 🏮 动画，回到顶部 */
+    $('.right-mid').animate({scrollTop: 0}, 400);
+
+    /* 🏮 jquery 鼠标监听 */
+    mouseover()     /* 鼠标移入（移入子元素也触发） */
+    mouseout()      /* 鼠标移出（离开子元素也触发） */
+    mouseenter()    /* 鼠标移入（移入子元素不触发） */
+    mouseleave()    /* 鼠标移出（离开子元素不触发） */
+    hover()         /* 鼠标移入移出（mouseenter与mouseleave的缩写） */
+    $('.parent').hover(function () {
+        $(this).parent().find('.drop').stop(false, true).fadeIn();
+    }, function () {
+        $(this).parent().find('.drop').stop(false, true).fadeOut();
+    });
+
+    /* 判断div背景图是否为空 */
+    if ($("div").css("background-image") == "none") ;
+
+</script>
+
+<div>&nbsp;（不换行空格）</div>
+<div>&ensp;（半角空格）</div>
+<div>&emsp;（全角空格）</div>
+<div>&thinsp;（窄空格）</div>
+<div>&zwnj;（零宽不连字）</div>
+<div>&zwj;（零宽连字）</div>
+
+<!--
+————————————————————————————————————————————————————————————————————————————————————————————————
+ 👉 ajax提交 和 form表单提交的区别
+
+（1）ajax在提交、请求、接收时，都是异步进行，只刷新页面局部，网页不需要刷新，不关心也不影响页面其他部分的内容。
+     Form提交则是新建一个页面，哪怕是提交给自己本身的页面，也需要刷新。
+
+（2）ajax提交时，是在后台新建一个请求。
+    Form却是放弃本页面，然后再请求。
+
+（3）ajax必须要用js来实现，存在浏览器兼容问题，不启用js的浏览器，无法完成操作。
+    Form表单是浏览器自带的，无论是否开启js，都可以提交表单。
+
+（4）ajax在提交、请求、接收时，整个过程都需要使用程序来对其进行数据处理。
+    Form表单提交，是根据表单结构自动完成，不需要代码干预，用submit提交。
+————————————————————————————————————————————————————————————————————————————————————————————————
+-->
+
+
+
+
+
+
+
+

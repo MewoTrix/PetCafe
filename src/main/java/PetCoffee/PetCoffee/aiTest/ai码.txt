@@ -1,0 +1,3 @@
+Appid = 28278989
+API Key = ABHhLMCZGCTisLRZMXChVz7u
+Secret Key = IfBo2O3FqhAstajDMamfPuNu04lC78OK
